@@ -1,16 +1,9 @@
-import socket
+import scan_method
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 
 ip_input = input("Enter the IP Address: ")
-port_input = input("Enter the Port Number: ")
+start_port = int(input("Enter start Port: "))
+end_port = int(input("Enter end Port: "))
 
-try:
-    s.connect((ip_input, int(port_input)))
-    print(f"{ip_input}:\n{port_input} OPEN")
-
-except Exception as e:
-    print(f"{ip_input}:{port_input}\nCLOSED.\nError: {e}")
-
-finally:
-    s.close()
+scan_method.scan_method(ip_input, start_port, end_port)
